@@ -27,3 +27,9 @@ module "cloudfront_distributions" {
     rootdomain_bucket_id = module.s3_buckets.rootdomain_bucket_id
     root_website_endpoint = module.s3_buckets.root_website_endpoint
 }
+
+module "route_53" {
+    source="./modules/aws-route-53"
+    subdomain_name = module.cloudfront_distributions.subdomain_name
+    root_domain_name = module.cloudfront_distributions.root_domain_name
+}

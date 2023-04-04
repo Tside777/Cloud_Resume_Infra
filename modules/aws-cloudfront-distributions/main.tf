@@ -18,7 +18,7 @@ resource "aws_cloudfront_distribution" "subDist" {
     enabled = true
     is_ipv6_enabled = true
     default_root_object = "index.html"
-    //aliases = ["www.trevorscloudresume.com"]
+    aliases = ["www.trevorscloudresume.com"]
     price_class = "PriceClass_100"
 
     restrictions {
@@ -28,7 +28,10 @@ resource "aws_cloudfront_distribution" "subDist" {
         }
     }
     viewer_certificate {
-        cloudfront_default_certificate = true
+        cloudfront_default_certificate = false
+        acm_certificate_arn = "arn:aws:acm:us-east-1:555531727565:certificate/6dacf070-f632-4c6a-9114-92486f6596d7"
+        minimum_protocol_version = "TLSv1.2_2021"
+        ssl_support_method = "sni-only"
       
     }
 }
@@ -68,7 +71,7 @@ resource "aws_cloudfront_distribution" "rootDist" {
     }
     enabled = true
     is_ipv6_enabled = true
-    //aliases = ["trevorscloudresume.com"]
+    aliases = ["trevorscloudresume.com"]
     price_class = "PriceClass_100"
 
     restrictions {
@@ -78,7 +81,10 @@ resource "aws_cloudfront_distribution" "rootDist" {
         }
     }
     viewer_certificate {
-        cloudfront_default_certificate = true
+        cloudfront_default_certificate = false
+        acm_certificate_arn = "arn:aws:acm:us-east-1:555531727565:certificate/6dacf070-f632-4c6a-9114-92486f6596d7"
+        minimum_protocol_version = "TLSv1.2_2021"
+        ssl_support_method = "sni-only"
       
     }
 }
