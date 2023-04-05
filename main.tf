@@ -36,7 +36,3 @@ module "route_53" {
     root_hosted_zone_id = module.cloudfront_distributions.root_hosted_zone_id
     sub_hosted_zone_id = module.cloudfront_distributions.sub_hosted_zone_id
 }
-
-module "dynamodb" {
-    source="./modules/aws-dynamodb"
-}
