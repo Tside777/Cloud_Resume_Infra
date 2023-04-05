@@ -29,7 +29,7 @@ resource "aws_cloudfront_distribution" "subDist" {
     }
     viewer_certificate {
         cloudfront_default_certificate = false
-        acm_certificate_arn = "arn:aws:acm:us-east-1:555531727565:certificate/6dacf070-f632-4c6a-9114-92486f6596d7"
+        acm_certificate_arn = var.cert_arn
         minimum_protocol_version = "TLSv1.2_2021"
         ssl_support_method = "sni-only"
       
@@ -82,7 +82,7 @@ resource "aws_cloudfront_distribution" "rootDist" {
     }
     viewer_certificate {
         cloudfront_default_certificate = false
-        acm_certificate_arn = "arn:aws:acm:us-east-1:555531727565:certificate/6dacf070-f632-4c6a-9114-92486f6596d7"
+        acm_certificate_arn = var.cert_arn
         minimum_protocol_version = "TLSv1.2_2021"
         ssl_support_method = "sni-only"
       

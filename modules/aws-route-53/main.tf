@@ -8,7 +8,7 @@ resource "aws_route53_record" "wwwIPv4" {
     type    = "A"
     alias {
       name = var.subdomain_name
-      zone_id = aws_route53_zone.trevorscloudresume_zone.id
+      zone_id = var.sub_hosted_zone_id
       evaluate_target_health = false
     }
 }
@@ -19,7 +19,7 @@ resource "aws_route53_record" "wwwIPv6" {
     type    = "AAAA"
     alias {
       name = var.subdomain_name
-      zone_id = aws_route53_zone.trevorscloudresume_zone.id
+      zone_id = var.sub_hosted_zone_id
       evaluate_target_health = false
     }
 }
@@ -30,7 +30,7 @@ resource "aws_route53_record" "IPv4" {
     type    = "A"
     alias {
       name = var.root_domain_name
-      zone_id = aws_route53_zone.trevorscloudresume_zone.id
+      zone_id = var.root_hosted_zone_id
       evaluate_target_health = false
     } 
 }
@@ -41,23 +41,43 @@ resource "aws_route53_record" "IPv6" {
     type    = "AAAA"
     alias {
       name = var.root_domain_name
-      zone_id = aws_route53_zone.trevorscloudresume_zone.id
+      zone_id = var.root_hosted_zone_id
       evaluate_target_health = false
     }  
 }
 
-/*
+resource "aws_route53_record" "cname" {
+  for_each = {
+    for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
+      name = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type = dvo.resource_record_type
+    }
+  }
 
-resource "aws_route53_record" "NS" {
-    
+  allow_overwrite = true
+  name = each.value.name
+  records = [ each.value.record ]
+  ttl = 300
+  type = each.value.type
+  zone_id = aws_route53_zone.trevorscloudresume_zone.id
+
 }
 
-resource "aws_route53_record" "SOA" {
-    
-}
 
-resource "aws_route53_record" "CNAME" {
+//=================================================================================
+//Certificate Management
+//=================================================================================
 
-}
+ resource "aws_acm_certificate" "cert" {
+  domain_name = "trevorscloudresume.com"
+  subject_alternative_names = [ "*.trevorscloudresume.com"]
+  validation_method = "DNS"
+ }
 
-*/
+ resource "aws_acm_certificate_validation" "certvalidation" {
+  certificate_arn = aws_acm_certificate.cert.arn
+  validation_record_fqdns = [for record in aws_route53_record.cname : record.fqdn]
+ }
+
+

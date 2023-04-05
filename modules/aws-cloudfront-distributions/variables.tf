@@ -17,3 +17,8 @@ variable "root_website_endpoint" {
     description = "Website endpoint for root S3 static site for redirect"
     type = string
 }
+
+variable "cert_arn" {
+    description = "ARN for SSL certificate"
+    type = string
+}

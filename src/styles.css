@@ -1,0 +1,57 @@
+.resume {
+    margin: 0 auto;
+    width: 900px;
+    font-size: 20px;
+    font-family: 'Times New Roman', serif;
+}
+
+.top {
+    font-size: 32px;
+    font-weight:bold;
+    margin: 15px;
+}
+
+.resume-box {
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.employer {
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.job-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.jobtitle {
+    font-style:italic;
+}
+
+.EduCerts {
+    display: flex;
+    justify-content: space-around;
+}
+
+.certs {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.sectionTitle {
+    font-size: 28px;
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.visitors {
+    text-align: center;
+    margin: 10px;
+}
+
+.userCount {
+    display: inline;
+}

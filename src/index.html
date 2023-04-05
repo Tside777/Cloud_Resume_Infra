@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trevor's Cloud Resume</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="resume">
+    <div class="top">My name is Trevor Seidel, welcome to my cloud hosted resume!</div>
+
+        <div class="resume-box">
+
+            <div class="sectionTitle">Projects</div>
+            <div class="row">
+                <ul>
+                    <li>This resume site! Based on <a href="https://cloudresumechallenge.dev/docs/the-challenge/aws/">Cloud Resume Challenge</a> by Forrest Brazeal, you're looking at an S3 static site, distributed on a Cloudfront CDN.
+                    I'm also tracking the number of site visitors in DynamoDB. The database is being updated through a Lambda API, all of which are deployed from Terraform. I've set up a CI/CD pipeline via GitHub Actions, and voila! A fullstack cloud application</li>
+                    <li><a href="https://tside777.github.io/dodgeGame/"">dodgeGame</a>: A fun web game I made in my last semester of college.
+                        This is pure html, css, and javascript, with a Google oauth login and Firebase integration to manage the scoreboard!</li>
+                </ul>
+            </div>
+
+            <div class="sectionTitle">Work Experience</div>
+            <div class="employer">Capital One Finance</div>
+            <div class="job-row">
+                <div class="jobtitle">Site Reliability Engineer</div>
+                <div class="jobtime">August 2022 - Present</div>
+            </div>
+            <ul>
+                <li>Automated security testing processes with AWS Lambda functions written in Python, saving teams 20 hours of manual work monthly.</li>
+                <li>Performed code reviews based on SAST scan results to identify and remediate potential OWASP Top 10 vulnerabilities, reducing the attack surface of Capital One applications.</li>
+                <li>Enabled enhanced monitoring and alerting for applications with New Relic, resulting in increased uptime and reducing time to recovery for teams.</li>
+                <li>Defined AWS IAM roles to establish secure permissions for cloud resources to operate.</li>
+            </ul>
+
+            <div class="job-row">
+                <div class="jobtitle">Software Engineer</div>
+                <div class="jobtime">August 2021 - 2022</div>
+            </div>
+            <ul>
+                <li>Piloted the establishment of a new tech team to handle broad enterprise security and infrastructure work, saving adjacent teams an estimated 10 hours weekly.</li>
+                <li>Full stack Angular web development for client facing banking applications.</li>
+                <li>Developed Stripe integration for small business accounts with React</li>
+                <li>Manual remediation of AWS ECS hosted Docker container vulnerabilities.</li>
+                <li>Enabled automated infrastructure rehydrations to remediate machine image related vulnerabilities for applications in a managed CI/CD pipeline.</li>
+            </ul>
+
+            <div class="employer">JP Morgan Chase & Co.</div>
+            <div class="job-row">
+                <div class="jobtitle">Software Engineering Intern</div>
+                <div class="jobtime">June 2019 - December 2020</div>
+            </div>
+            <ul>
+                <li>Developed Python scripts and Ansible to automate Linux and Windows VM deployments to improve security and efficiency of user machines.</li>
+                <li>Managed infrastructure configuration and VM workstation deployment with Ansible.</li>
+                <li>Developed Python scripts with the Pandas library to eliminate an estimated 30 hours per month of manual Excel data manipulation.</li>
+                <li>Developed full stack Salesforce web applications with Apex for business logic and computation, and JavaScript for front-end displays and client-side processing.</li>
+            </ul>
+
+            <div class="EduCerts">
+                <div class="education">
+                    <div class="sectionTitle">Education</div>
+                    University of Delaware<br>
+                    Honors B.S. in Computer Science<br>
+                    Newark, Delaware<br>
+                    GPA: 3.8
+                </div>
+
+                <div class="certs">
+                    <div class="sectionTitle">Certifications</div>
+                    <img src="https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Solutions-Architect-Associate_badge.3419559c682629072f1eb968d59dea0741772c0f.png"
+                    height="100px" width="100px">
+                </div>
+            </div>
+        </div>
+
+        <div class="visitors">
+            <div class="userCount"></div> users have visited my site!
+        </div>
+
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

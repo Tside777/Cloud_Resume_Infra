@@ -26,10 +26,17 @@ module "cloudfront_distributions" {
     subdomain_bucket_regional_domain = module.s3_buckets.subdomain_bucket_regional_domain
     rootdomain_bucket_id = module.s3_buckets.rootdomain_bucket_id
     root_website_endpoint = module.s3_buckets.root_website_endpoint
+    cert_arn = module.route_53.cert_arn
 }
 
 module "route_53" {
     source="./modules/aws-route-53"
     subdomain_name = module.cloudfront_distributions.subdomain_name
     root_domain_name = module.cloudfront_distributions.root_domain_name
+    root_hosted_zone_id = module.cloudfront_distributions.root_hosted_zone_id
+    sub_hosted_zone_id = module.cloudfront_distributions.sub_hosted_zone_id
+}
+
+module "dynamodb" {
+    source="./modules/aws-dynamodb"
 }
