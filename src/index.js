@@ -1,8 +1,7 @@
 
 async function incrementUserCount() {
-    const response = await fetch("https://vrvf5mlej7.execute-api.us-east-1.amazonaws.com/test", {
-        method: "PUT",
-        mode: "cors",
+    const response = await fetch("https://5kfjc0yuzg.execute-api.us-east-1.amazonaws.com/prod/cloudresume", {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },

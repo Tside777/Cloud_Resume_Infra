@@ -50,7 +50,7 @@ data "aws_iam_policy_document" "cloudfront_subdomain_policy" {
 
 
 //=================================================================================
-//Root Domain Bucket Configuration
+//Root Domain Bucket Configuration (For web redirect only)
 //=================================================================================
 resource "aws_s3_bucket" "rootbucket" {
     bucket = var.rootdomain_bucket_name
@@ -82,4 +82,34 @@ resource "aws_s3_bucket_website_configuration" "webbucket" {
         host_name = "www.trevorscloudresume.com"
         protocol = "https"
     }
+}
+
+//=================================================================================
+//Bucket Objects (Stored in subdomain bucket only)
+//=================================================================================
+resource "aws_s3_object" "html" {
+    key = "index.html"
+    bucket = aws_s3_bucket.subbucket.id
+    source = "src/index.html"
+    server_side_encryption = "AES256"
+    etag = filemd5("src/index.html")
+    content_type = "text/html"
+}
+
+resource "aws_s3_object" "css" {
+    key = "styles.css"
+    bucket = aws_s3_bucket.subbucket.id
+    source = "src/styles.css"
+    server_side_encryption = "AES256"
+    etag = filemd5("src/styles.css")
+    content_type = "text/css"
+}
+
+resource "aws_s3_object" "js" {
+    key = "index.js"
+    bucket = aws_s3_bucket.subbucket.id
+    source = "src/index.js"
+    server_side_encryption = "AES256"
+    etag = filemd5("src/index.js")
+    content_type = "application/x-javascript"
 }
