@@ -8,7 +8,7 @@ async function incrementUserCount() {
     });
     const jsonData = await response.json();
     const userCount = document.querySelector('.userCount');
-    userCount.innerHTML = jsonData.body.userCount;
+    userCount.innerHTML = jsonData.userCount;
     console.log(jsonData);
 
   }
