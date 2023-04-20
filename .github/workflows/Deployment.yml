@@ -6,7 +6,6 @@ permissions:
   contents: read
 jobs:
   terraform-deployment:
-    needs: test-python-code
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
