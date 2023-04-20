@@ -5,10 +5,19 @@ terraform {
         version = "~> 4.0"
       }
     }
+    backend "s3" {
+      bucket = "trevors-cloud-resume-frontend-state-bucket"
+      key = "terraform-state"
+      region = "us-east-1"
+    }
 }
 
 provider "aws" {
     region = "us-east-1"
+}
+
+module "s3_backend" {
+  source = "./modules/aws-s3-backend/"
 }
 
 module "s3_buckets" {

@@ -1,0 +1,32 @@
+name: Deployment
+run-name: ${{ github.actor }} is deploying the cloud resume backend
+on: [push]
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  terraform-deployment:
+    needs: test-python-code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cd $GITHUB_WORKSPACE
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::555531727565:role/CloudResume_Github_Actions_Backend
+          aws-region: us-east-1
+
+      - uses: hashicorp/setup-terraform@v2
+      - run: terraform init
+
+      - id: plan
+        run: terraform plan -no-color
+
+      - run: terraform apply -auto-approve
+
+      - run: aws cloudfront create-invalidation --distribution-id E5JZMESLFPIVX --paths "/*"
+
+
+
+
