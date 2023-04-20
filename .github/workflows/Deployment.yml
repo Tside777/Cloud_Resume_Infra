@@ -1,5 +1,5 @@
 name: Deployment
-run-name: ${{ github.actor }} is deploying the cloud resume backend
+run-name: ${{ github.actor }} is deploying the cloud resume frontend
 on: [push]
 permissions:
   id-token: write
