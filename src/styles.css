@@ -32,7 +32,7 @@
 
 .EduCerts {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .certs {
@@ -54,4 +54,13 @@
 
 .userCount {
     display: inline;
+}
+
+a {
+    text-decoration: none;
+}
+
+.skills > ul {
+    margin-top: 10px;
+    padding-left: 20px;
 }
