@@ -113,3 +113,30 @@ resource "aws_s3_object" "js" {
     etag = filemd5("src/index.js")
     content_type = "application/x-javascript"
 }
+
+resource "aws_s3_object" "github_logo" {
+    key = "github-mark.png"
+    bucket = aws_s3_bucket.subbucket.id
+    source = "src/github-mark.png"
+    server_side_encryption = "AES256"
+    etag = filemd5("src/github-mark.png")
+    content_type = "image/png"
+}
+
+resource "aws_s3_object" "linked_in" {
+    key = "LI-In-Bug.png"
+    bucket = aws_s3_bucket.subbucket.id
+    source = "src/LI-In-Bug.png"
+    server_side_encryption = "AES256"
+    etag = filemd5("src/LI-In-Bug.png")
+    content_type = "image/png"
+}
+
+resource "aws_s3_object" "dev_to" {
+    key = "dev-black.png"
+    bucket = aws_s3_bucket.subbucket.id
+    source = "srcdev-black.png"
+    server_side_encryption = "AES256"
+    etag = filemd5("src/dev-black.png")
+    content_type = "image/png"
+}

@@ -6,9 +6,23 @@
 }
 
 .top {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.name {
     font-size: 32px;
     font-weight:bold;
-    margin: 15px;
+}
+
+.quoteblock {
+    font-style:italic;
+}
+
+.credit {
+    text-align: end;
 }
 
 .resume-box {
@@ -63,4 +77,13 @@ a {
 .skills > ul {
     margin-top: 10px;
     padding-left: 20px;
+}
+
+.links {
+    width: 900px;
+    text-align: center;
+}
+
+a > img {
+    margin: 0px 5px;
 }
