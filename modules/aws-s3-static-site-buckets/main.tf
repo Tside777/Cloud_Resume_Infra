@@ -135,7 +135,7 @@ resource "aws_s3_object" "linked_in" {
 resource "aws_s3_object" "dev_to" {
     key = "dev-black.png"
     bucket = aws_s3_bucket.subbucket.id
-    source = "srcdev-black.png"
+    source = "src/dev-black.png"
     server_side_encryption = "AES256"
     etag = filemd5("src/dev-black.png")
     content_type = "image/png"
